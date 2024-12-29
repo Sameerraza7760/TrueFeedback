@@ -89,7 +89,6 @@ const page = () => {
     if (!session || !session.user) return;
 
     fetchMessages();
-
     fetchMessagesStatus();
   }, [session, setValue, toast, fetchMessagesStatus, fetchMessages]);
 
@@ -166,7 +165,7 @@ const page = () => {
       <Button
         className="mt-4"
         variant="outline"
-        onClick={(e) => {
+        onClick={(e) => { 
           e.preventDefault();
           fetchMessages(true);
         }}

@@ -2,7 +2,7 @@ import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/models/User";
 
 export async function POST(request: Request) {
-  // Connect to the database
+
   await dbConnect();
 
   try {
@@ -16,8 +16,6 @@ export async function POST(request: Request) {
         { status: 404 }
       );
     }
-
-    // Check if the code is correct and not expired
     const isCodeValid = user.verifyCode === code;
     const isCodeNotExpired = new Date(user.verifyCodeExpiry) > new Date();
 
