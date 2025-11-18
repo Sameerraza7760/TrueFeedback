@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     });
     const completion = response.choices[0].text.trim();
     return NextResponse.json({ completion });
-  } catch (error) {
+  } catch (error:Error | any) {
     console.error("Error:", error);
     return NextResponse.json(
       { error: error?.message || "Something went wrong" },
