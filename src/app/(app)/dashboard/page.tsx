@@ -6,16 +6,17 @@ import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/components/ui/use-toast";
 import { Message } from "@/models/User";
+import { AcceptMessageSchema } from "@/schemas/acceptMessageSchemas";
 import { ApiResponse } from "@/types/ApiResponse";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
+import { AxiosError } from "axios";
 import { Loader2, RefreshCcw } from "lucide-react";
+import { ObjectId } from "mongoose";
 import { User } from "next-auth";
 import { useSession } from "next-auth/react";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { AcceptMessageSchema } from "@/schemas/acceptMessageSchemas";
-
 const Page = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +24,7 @@ const Page = () => {
 
   const { toast } = useToast();
 
-  const handleDeleteMessage = (messageId: string) => {
+  const handleDeleteMessage = (messageId: any) => {
     setMessages(messages.filter((message) => message._id !== messageId));
   };
 
@@ -40,7 +41,7 @@ const Page = () => {
     try {
       const response = await axios.get<ApiResponse>("/api/accept-messages");
       setValue("messagesStatus", response.data.isAcceptingMessages);
-      return response.data.isAcceptingMessages; // its an boolean value
+      return response.data.isAcceptingMessages;
     } catch (error) {
       const axiosError = error as AxiosError<ApiResponse>;
       toast({
@@ -165,7 +166,7 @@ const Page = () => {
       <Button
         className="mt-4"
         variant="outline"
-        onClick={(e) => { 
+        onClick={(e) => {
           e.preventDefault();
           fetchMessages(true);
         }}
@@ -180,7 +181,7 @@ const Page = () => {
         {messages.length > 0 ? (
           messages.map((message, index) => (
             <MessageCard
-              key={message._id}
+              key={index}
               message={message}
               onMessageDelete={handleDeleteMessage}
             />
@@ -193,4 +194,4 @@ const Page = () => {
   );
 };
 
-export default page;
+export default Page;
