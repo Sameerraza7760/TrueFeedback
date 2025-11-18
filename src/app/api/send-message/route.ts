@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 import UserModel from "@/models/User";
 import dbConnect from "@/lib/dbConnect";
 import { Message } from "@/models/User";

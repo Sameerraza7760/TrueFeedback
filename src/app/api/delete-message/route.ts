@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/models/User";
@@ -5,6 +8,7 @@ import mongoose from "mongoose";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/option";
 import { User } from "next-auth";
+
 export async function DELETE(request: Request) {
   await dbConnect();
   const session = await getServerSession(authOptions);

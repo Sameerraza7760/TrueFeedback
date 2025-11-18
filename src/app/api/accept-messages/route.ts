@@ -1,8 +1,12 @@
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/app/api/auth/[...nextauth]/option';
 import dbConnect from '@/lib/dbConnect';
 import UserModel from '@/models/User';
 import { User } from 'next-auth';
+
 
 export async function POST(request: Request) {
   // Connect to the database

@@ -24,7 +24,7 @@ const Page = () => {
 
   const { toast } = useToast();
 
-  const handleDeleteMessage = (messageId: any) => {
+  const handleDeleteMessage = (messageId :any) => {
     setMessages(messages.filter((message) => message._id !== messageId));
   };
 
