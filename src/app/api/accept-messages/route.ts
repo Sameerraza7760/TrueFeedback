@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
 
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/app/api/auth/[...nextauth]/option';
