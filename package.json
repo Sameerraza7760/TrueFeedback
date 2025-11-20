@@ -28,6 +28,7 @@
     "embla-carousel": "^8.1.6",
     "embla-carousel-autoplay": "^8.1.6",
     "embla-carousel-react": "^8.1.6",
+    "groq-sdk": "^0.36.0",
     "lucide-react": "^0.408.0",
     "mongoose": "^8.4.5",
     "next": "14.2.4",
